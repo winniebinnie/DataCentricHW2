@@ -1,0 +1,90 @@
+@model IEnumerable<WeatherServer.Models.City>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Cities</h1>
+
+<p>
+    <a asp-action="Create">Add New City</a>
+</p>
+<p>
+    <form asp-controller="Cities" asp-action="Index" method="Get">
+    <p>
+        <label>Title: <input type="text" name="SearchString" /></label>
+        <input type="submit" value="Filter" />
+    </p>
+    </form>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temperature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WindSpeed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WindDirection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Humidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precipitation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UV)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temperature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WindSpeed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WindDirection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Humidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precipitation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UV)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
